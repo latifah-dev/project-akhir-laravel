@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\ItemTransaction;
+use App\Models\Product;
 
 class TransactionController extends Controller
 {
@@ -18,7 +20,19 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaksi = Transaction::query()->where("id", $id)->first();
+        $itemTransactions = ItemTransaction::query()->where('transaksiId', $id)->get();
 
+        $productIds = $itemTransactions->pluck('productId');
+        $products = Product::query()->whereIn('id', $productIds)->get();
+
+        $keranjang = [];
+        foreach ($itemTransactions as $itemTransaction) {
+        $product = $products->where('id', $itemTransaction->productId)->first();
+        $keranjang[] = [
+            "itemTransaction" => $itemTransaction,
+            "product" => $product
+        ];
+    }
         if ($transaksi == null) {
             return response()->json([
                 "status" => false,
@@ -30,12 +44,13 @@ class TransactionController extends Controller
         return response()->json([
             "status" => true,
             "message" => "",
-            "data" => $transaksi
+            "data" => $keranjang
         ]);
     }
 
     public function store(Request $request)
     {
+        
         $payload = $request->all();
         $transaksi = Transaction::query()->create($payload);
         return response()->json([
@@ -45,6 +60,11 @@ class TransactionController extends Controller
         ]);
     }
     function update($id,Request $request){
+        $newName = "";
+        $extension = $request->file('photo')->getClientOriginalExtension();
+        $newName = $request->id.'-'.now()->timestamp.'.'.$extension;
+        $request->file('photo')->storeAs('public/images', $newName);
+        $request['buktiPembayaran']=$newName;
         $transaksi = Transaction::query()->where('id',$id)->first();
         if($transaksi == null){
             return response()->json([

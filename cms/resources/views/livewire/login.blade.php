@@ -16,7 +16,8 @@
             .then(async (response) => {
             this.users = await response.json()
             const user = this.users.data
-            localStorage.setItem('token', user.auth.token)
+            let token = localStorage.setItem('token', user.auth.token)
+            this.token = token
             if(user.user.roleid == '1' || user.user.roleid == '2' ){
                 window.location.replace('http://127.0.0.1:3000/dashboard')
             }

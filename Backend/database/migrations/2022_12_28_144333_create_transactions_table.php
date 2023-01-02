@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('IdUser');
-            $table->bigInteger('totalPrice');
-            $table->string('paymentMethod');
-            $table->bigInteger('shipingPrice');
-            $table->text('MessageForTim');
+            $table->bigInteger('totalPrice')->nullable();
+            $table->string('paymentMethod')->nullable();
+            $table->bigInteger('shipingPrice')->nullable();
+            $table->text('MessageForTim')->nullable();
             $table->string('status');
+            $table->string('buktiPembayaran')->nullable();
             $table->timestamps();
         });
     }

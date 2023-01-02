@@ -5,7 +5,9 @@ use App\Http\Livewire\Login;
 use App\Http\Livewire\Display;
 use App\Http\Livewire\Register;
 use App\Http\Livewire\Transaksi;
+use App\Http\Livewire\Uploadbukti;
 use App\Http\Livewire\Itemtransaksi;
+use App\Http\Livewire\BuktiTransaksi;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,8 +28,11 @@ Route::get('/', Home::class)->name('home');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 Route::get('/product', Display::class)->name('displayproduct');
-Route::get('/cart', Itemtransaksi::class)->name('itemtransaksi');
-Route::get('/transaksi', Transaksi::class)->name('transaksi');
+Route::get('/addcart/{id}', Itemtransaksi::class)->name('itemtransaksi');
+Route::get('/transaksi/{transaksiId}', Transaksi::class)->name('transaksi');
+Route::get('/transaksi/{idUser}', Transaksi::class)->name('transaksibyuser');
+Route::get('/upload/{transaksiId}', Uploadbukti::class)->name('bukti');
+Route::get('/selesaitransaksi/{transaksiId}', BuktiTransaksi::class)->name('payed');
 
 Route::view('/dashboard', 'livewire.dashboard')->name('dashboard');
 Route::view('/dashboard/tasklist', 'livewire.tabeltransaksi')->name('tabeltransaksi');

@@ -24,7 +24,7 @@
 
         },
     async update(id) {
-        console.l
+
       let photo = this.files[0]
       const data = new FormData()
       data.append('photo', photo)

@@ -17,11 +17,11 @@
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <!-- memanggil tailwind -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        <link href="tailwind_theme/tailwind.css" rel="stylesheet" type="text/css">
+        <link href="{{asset('tailwind_theme/tailwind.css')}}" rel="stylesheet" type="text/css">
         <!-- menggunakan livewire -->
         @livewireStyles
         <script  src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+        
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>/* Pinegrow Interactions, do not remove */ (function(){try{if(!document.documentElement.hasAttribute('data-pg-ia-disabled')) { window.pgia_small_mq=typeof pgia_small_mq=='string'?pgia_small_mq:'(max-width:767px)';window.pgia_large_mq=typeof pgia_large_mq=='string'?pgia_large_mq:'(min-width:768px)';var style = document.createElement('style');var pgcss='html:not(.pg-ia-no-preview) [data-pg-ia-hide=""] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show=""] {opacity:1;visibility:visible;display:block;}';if(document.documentElement.hasAttribute('data-pg-id') && document.documentElement.hasAttribute('data-pg-mobile')) {pgia_small_mq='(min-width:0)';pgia_large_mq='(min-width:99999px)'} pgcss+='@media ' + pgia_small_mq + '{ html:not(.pg-ia-no-preview) [data-pg-ia-hide="mobile"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="mobile"] {opacity:1;visibility:visible;display:block;}}';pgcss+='@media ' + pgia_large_mq + '{html:not(.pg-ia-no-preview) [data-pg-ia-hide="desktop"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="desktop"] {opacity:1;visibility:visible;display:block;}}';style.innerHTML=pgcss;document.querySelector('head').appendChild(style);}}catch(e){console&&console.log(e);}})()</script>
@@ -46,7 +46,7 @@
       <div class="container mx-auto relative"> 
         <nav class="flex flex-wrap items-center p-4"> 
           <a href="#" class="font-bold font-serif hover:text-opacity-75 inline-flex items-center leading-none mr-auto text-secondary-500 text-xl uppercase">
-              <img src="images/logo.png" alt="" width="75">
+              <img src="{{asset('images/logo.png')}}" alt="" width="75">
             <span>Friendzone<br>Bakery</span> </a> 
           <button class="hover:bg-white hover:text-secondary-500 lg:hidden px-3 py-2 rounded text-secondary-500" data-name="nav-toggler" data-pg-ia='{"l":[{"name":"NabMenuToggler","trg":"click","a":{"l":[{"t":"^nav|[data-name=nav-menu]","l":[{"t":"set","p":0,"d":0,"l":{"class.remove":"hidden"}}]},{"t":"#gt# span:nth-of-type(1)","l":[{"t":"tween","p":0,"d":0.2,"l":{"rotationZ":45,"yPercent":300}}]},{"t":"#gt# span:nth-of-type(2)","l":[{"t":"tween","p":0,"d":0.2,"l":{"autoAlpha":0}}]},{"t":"#gt# span:nth-of-type(3)","l":[{"t":"tween","p":0,"d":0.2,"l":{"rotationZ":-45,"yPercent":-300}}]}]},"pdef":"true","trev":"true"}]}' data-pg-ia-apply="$nav [data-name=nav-toggler]"> 
             <span class="block border-b-2 border-current my-1 w-6"></span> 
@@ -58,7 +58,7 @@
               <a href="{{route('home')}}" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">Home</a>
               <a href="#" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">Custom Cakes</a>
               <a href="{{route('displayproduct')}}" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">Product</a>
-              <a href="#" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">About</a>
+              <a href="#" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">Keranjang</a>
               <a href="#" class="hover:text-opacity-75 lg:px-6 lg:py-4 py-2 text-black">Contact</a> 
             </div>
             <template x-if="islogin">

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('item_transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('productId');
+            $table->string('size');
             $table->integer('qty');
             $table->bigInteger('subTotal');
             $table->date('shipingDate');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('telp');
             $table->text('greatingCart');
             $table->unsignedBigInteger('transaksiId');
+            $table->string('status');
             $table->timestamps();
         });
     }

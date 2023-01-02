@@ -1,6 +1,12 @@
 <script>
   Alpine.data('product', () => ({
       products:[],
+      islogin: false,
+  ceklogin(){
+      const token = localStorage.getItem('token')
+      this.islogin = token ? true : false
+      },
+
   fetchProducts() {
     fetch('http://127.0.0.1:8000/api/product')
       .then(response => response.json())
@@ -20,15 +26,21 @@
               <div class="bg-white border border-gray-100 transition transform duration-700 hover:shadow-xl hover:scale-105 p-4 rounded-lg relative">
                 
                 <img class="w-64 mx-auto transform transition duration-300 hover:scale-105" :src="'http://127.0.0.1:8000/storage/images/'+product.image" alt="" />
-                <div class="flex flex-col items-center my-3 space-y-2">
+                <div x-init="ceklogin()" class="flex flex-col items-center my-3 space-y-2">
                     <h1 x-text="product.nameProduct" class="text-gray-900 poppins text-lg">judul</h1>
                     
                     <h2 x-text="product.price" class="text-gray-900 poppins text-2xl font-bold">harga</h2>
-                    <button class="bg-black text-white px-8 py-2 focus:outline-none poppins rounded-full mt-24 transform transition duration-300 hover:scale-105" onClick={handleRoute}>Order Now</button>
+                    <template x-if="islogin">
+                      <a :href="`addcart/${product.id}`" class="bg-black text-white px-8 py-2 focus:outline-none poppins rounded-full mt-24 transform transition duration-300 hover:scale-105">Order Now</a>
+                    </template>
+                    <template x-if="!islogin">
+                      <a href="{{route('login')}}" class="bg-black text-white px-8 py-2 focus:outline-none poppins rounded-full mt-24 transform transition duration-300 hover:scale-105">Order Now</a>
+                    </template>
+                    
                 </div>
             </div>
             </div> 
-            </template>           
+            </template>
           </div>           
         </div>         
       </div>
