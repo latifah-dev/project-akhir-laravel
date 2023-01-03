@@ -46,9 +46,7 @@
                                 </div>
                             </a>
                         </div>
-                        <button onclick="popuphandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <p class="text-sm font-medium leading-none text-white">Add Task</p>
-                        </button>
+                       
                     </div>
                     <div class="mt-7 overflow-x-auto">
                         <table class="w-full whitespace-nowrap">
@@ -88,9 +86,6 @@
                                     </td>
                                     <td class="pl-4">
                                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">View</button>
-                                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">Edit</button>
-                                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">Delete</button>
-                                        
                                     </td>
                                 </tr>
                                 <tr class="h-3"></tr>
@@ -104,21 +99,4 @@
     </div>
     </div>
     </main>
-            <script src="./index.js"></script>
-            <style>.checkbox:checked + .check-icon {
-      display: flex;
-    }
-    </style>
-            <script>function dropdownFunction(element) {
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
-                    list.classList.add("target");
-                    for (i = 0; i < dropdowns.length; i++) {
-                        if (!dropdowns[i].classList.contains("target")) {
-                            dropdowns[i].classList.add("hidden");
-                        }
-                    }
-                    list.classList.toggle("hidden");
-                }</script>
 @endsection
