@@ -22,11 +22,11 @@
       data.append('email', this.payload.email)
       data.append('password', this.payload.password)
       data.append('roleid', 2)
-      const respon = fetch('http://127.0.0.1:8000/api/register',{
+      const respon = fetch('http://latifah.fly.dev/api/register',{
             method: 'POST',
             body: data
             });
-            window.location.replace('http://127.0.0.1:3000/dashboard')
+            window.location.replace('http:///dashboard')
 
     }
   }))
